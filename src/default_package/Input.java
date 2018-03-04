@@ -17,25 +17,15 @@ public class Input {
 	/**
 	 * Stores lines to the Line Storage object
 	 */
-	//      LineStorage lineStorage;
-	KWICdriver gui = new KWICdriver();
-	public static Button submitButton;
-	/**
-	 * Construct Input
-	 */
-	//      public Input() {
-	//              lineStorage = new LineStorage();
-	//      }
+	
 
 	/**
-	 * Reads the file and parses every line
+	 * Reads the file and parses every line or receives user input
 	 *
-	 * @param file
-	 *
-	 * @return Line Storage object
-	 *
-	 * @throws IOException
 	 */
+	
+	KWICdriver gui = new KWICdriver();
+	
 	public LineStorage readAndStore(String file, LineStorage lineStorage) throws IOException {
 		// Reads the file
 		BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -69,31 +59,16 @@ public class Input {
 	}
 
 	public void getUserInput( LineStorage lineStorage){
-
-		// KWICdriver gui = new KWICdriver();
-		// submitButton = new Button("Submit");
-
-		//System.out.println("button text:" + gui.getSubmitButton().getText());
-
-
-
 		int lineCounter = 0;
 
-		//if(e.getSource() == gui.getsubmitButton()){
 		for (String line : gui.getTextArea().getText().split("\\n")){
 			if(!line.equals("")){
 				lineStorage.setLine(lineCounter, line);
 				System.out.println("line:" + line);
-				//      }
 				lineCounter++;
 			}
-			//        submitButton.setVisible(false);
-			//      gui.getHeaderLaber().setText("Output:");
-			gui.getTextArea().setText("");
 		}
 	}
-
-
 
 }
 

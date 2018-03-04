@@ -29,7 +29,6 @@ public class Alphabetizer {
 	 * @param circularShift
 	 */
 	public Alphabetizer() {
-		//      this.circularShift = circularShift;
 		shiftedLineList = new ArrayList<String>();
 		sortedLineList = new ArrayList<String>();
 	}

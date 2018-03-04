@@ -52,7 +52,7 @@ public class LineStorage {
         }
 
         /**
-         * Add a line to the storage line map which atomatically calls the addWord
+         * Add a line to the storage line map which automatically calls the addWord
          * to add the storage word array map
          */
         public void setLine(Integer lineNumber, String line) {

@@ -12,25 +12,15 @@ public class CircularShift {
         LineStorage lineStore = new LineStorage();
 
         /**
-         * Stores circular line list
-         */
-        //List<String> circularLineList;
-
-        /**
          * Construct the Circular Shift object based on Line Storage object
          *
          * @param lineStorage
          */
-        //      public CircularShift(LineStorage lineStorage) {
-        //              this.lineStorage = lineStorage;
-        //              circularLineList = new ArrayList<String>();
-        //
-        //      }
+
 
         /**
          * Performs the circular shifts and adds them to the circular line list
          */
-        //private LineStorage lineStore = new LineStorage();
 
         String line;
         int shiftedLineIndex = 0;
@@ -61,6 +51,7 @@ public class CircularShift {
                 System.out.println("index: " + shiftedLineIndex);
         }
 
+        //sets shifted lines on given line
         public void setLine(int lineNumber, String shiftedLine) {
                 lineStore.setLine(lineNumber, shiftedLine);
 
