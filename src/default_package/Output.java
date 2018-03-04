@@ -14,13 +14,13 @@ public class Output {
 	/**
 	 * Noise word list
 	 */
-	List<String> noiseWordList;
+	
+	public static List<String> noiseWordList;
 
 	/**
 	 * Alphabetizer object
 	 */
-	Alphabetizer alphabetizer;
-	Label headerLabel;
+	//Alphabetizer alphabetizer = new Alphabetizer();
 	KWICdriver gui = new KWICdriver();
 
 	/**
@@ -28,20 +28,21 @@ public class Output {
 	 *
 	 * @param alphabetizer
 	 */
-	public Output(Alphabetizer alphabetizer) {
-		this.alphabetizer = alphabetizer;
+	public Output() {
+		//this.alphabetizer = alphabetizer;
 
 		// Declare noise words
 		noiseWordList = Arrays.asList(new String[] { "a", "an", "the", "and", "or", "of", "to", "be", "is", "in", "out",
 				"by", "as", "at", "off" });
+		
 	}
 
 	/**
 	 * Print the output
 	 */
-	public void print() {
+	public void print(Alphabetizer alphabetizer) {
 		// Loop through the line list to examine every sorted line
-
+		noiseWordList.add("pipe");
 		System.out.println();
 
 		for (int i = 0; i < alphabetizer.getLineCount(); i++) {
@@ -49,7 +50,7 @@ public class Output {
 			String firstWord = alphabetizer.getLine(i).split(" ")[0].toLowerCase();
 
 			// If first word is a noise word, don't print
-			//       if (!noiseWordList.contains(firstWord)) {
+			      if (!noiseWordList.contains(firstWord)) {
 
 			System.out.println("sorted:" + alphabetizer.getLine(i));
 
@@ -57,7 +58,12 @@ public class Output {
 
 			gui.getTextArea().appendText(alphabetizer.getLine(i) + "\n");
 
-			//      }
+			      }
 		}
+	}
+	
+	public void addNoiseWord(String noiseWord) {
+	//	noiseWordList.add(noiseWord);
+		
 	}
 }

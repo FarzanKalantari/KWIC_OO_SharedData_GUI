@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -39,8 +41,10 @@ public class KWICdriver extends Application{
 	public static TextArea textArea;
 	public static Label headerLabel;
 	Button submitButton;
+	Button resetButton;
 	Button exitButton;
 	Button addNoiseWordButton;
+	
 
 	public static void main(String args[]) throws IOException {
 		launch(args);
@@ -67,6 +71,8 @@ public class KWICdriver extends Application{
 		submitButton = new Button("Submit");
 		exitButton = new Button("Exit");
 		addNoiseWordButton = new Button("Add Noise Word");
+		resetButton = new Button("Reset");
+		//resetButton.setVisible(false);
 		buttonBar.setAlignment(Pos.BOTTOM_CENTER);
 		buttonBar.setStyle("-fx-highlight-fill: lightgray; -fx-font-weight: bold; -fx-font-size: 18px;");
 
@@ -90,15 +96,59 @@ public class KWICdriver extends Application{
 				alphabetizer.alpha(circularShift);
 
 				//Initialize Output based on the Alphabetizer and print output
-				Output output = new Output(alphabetizer);
-				output.print();
+				Output output = new Output();
+				output.print(alphabetizer);
 				
-				submitButton.setVisible(false);
+				//submitButton.setVisible(false);
+				submitButton.setDisable(true);
+				resetButton.setVisible(true);
 				
 			}
 		});
+		
+		exitButton.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent e)
+			{
+				System.exit(0);
+			}
+		});
+		
+		addNoiseWordButton.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent e)
+			{				Input input = new Input();
+			CircularShift circularShift = new CircularShift();
+			Alphabetizer alphabetizer = new Alphabetizer();
 
-		buttonBar.getChildren().addAll(submitButton, exitButton, addNoiseWordButton);
+							Output output = new Output();
+
+//				TextInputDialog dialog = new TextInputDialog();
+//				dialog.setTitle("Text Input Dialog");
+//				//dialog.setHeaderText("Look, a Text Input Dialog");
+//				dialog.setContentText("Please enter a new noise word:");
+//				// Traditional way to get the response value.
+//				Optional<String> result = dialog.showAndWait();
+//				if (result.isPresent()){
+//				    System.out.println("Your name: " + result.get().toString() );
+//					//output.addNoiseWord(result.get().toString());
+//
+//				}
+				output.addNoiseWord("pipe");
+				
+			}
+		});
+		
+		resetButton.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent e)
+			{				
+				textArea.setText("");
+				submitButton.setDisable(false);
+			}
+		});
+
+		buttonBar.getChildren().addAll(submitButton, addNoiseWordButton, resetButton, exitButton);
 		vBox.getChildren().addAll(headerLabel, textArea, buttonBar);
 		Scene scene = new Scene(vBox, 1080, 920);
 
