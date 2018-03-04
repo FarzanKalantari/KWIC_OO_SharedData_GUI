@@ -1,0 +1,3 @@
+pipe and filter
+
+software architecture in practice
