@@ -25,6 +25,8 @@ import javafx.stage.Stage;
  *
  */
 import javafx.application.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -46,22 +48,7 @@ public class KWICdriver extends Application{
 
 
                 // Initialize Input and load file
-                Input input = new Input();
-                LineStorage lineStorage = new LineStorage();
-                input.readAndStore("C:\\Users\\1540362838C\\Documents\\workspace\\KWIC OO HashMap\\src\\testCase", lineStorage);
-                input.getUserInput(lineStorage);
-
-                // Initialize Circular Shift based on the line storage and process shift
-                CircularShift circularShift = new CircularShift();
-                circularShift.setup(lineStorage);
-
-                // Initialize Alphabetizer based on the Circular Shift and sort
-                Alphabetizer alphabetizer = new Alphabetizer();
-                alphabetizer.alpha(circularShift);
-
-                //Initialize Output based on the Alphabetizer and print output
-                Output output = new Output(alphabetizer);
-                output.print();
+              
 
 
                 launch(args);
@@ -99,16 +86,34 @@ public class KWICdriver extends Application{
                 //              root.getChildren().add(textArea);
 
 
+                submitButton.setOnAction(new EventHandler<ActionEvent>(){
+                    @Override
+                  public void handle(ActionEvent e)
+                  {
+                    	  Input input = new Input();
+                          LineStorage lineStorage = new LineStorage();
+                          input.getUserInput(lineStorage);
 
-                buttonBar.getChildren().addAll(input.getSubmitButton(), exitButton, addNoiseWordButton);
+                          // Initialize Circular Shift based on the line storage and process shift
+                          CircularShift circularShift = new CircularShift();
+                          circularShift.setup(lineStorage);
+
+                          // Initialize Alphabetizer based on the Circular Shift and sort
+                          Alphabetizer alphabetizer = new Alphabetizer();
+                          alphabetizer.alpha(circularShift);
+
+                          //Initialize Output based on the Alphabetizer and print output
+                          Output output = new Output(alphabetizer);
+                          output.print();
+                  }
+          });
+                
+                buttonBar.getChildren().addAll(submitButton, exitButton, addNoiseWordButton);
                 vBox.getChildren().addAll(headerLabel, textArea, buttonBar);
 
-                //      GridPane grid = new GridPane();
 
-                //grid.add(hBox, 0, 0);
 
                 Scene scene = new Scene(vBox, 1080, 920);
-                //Scene scene2 = new Scene(buttonBar, 1080, 920);
 
                 textArea.setMinHeight(scene.getHeight()*.8);
 
