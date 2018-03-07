@@ -44,11 +44,10 @@ public class CircularShift implements StorageI {
 
                                 //set shifted lines
                                 setLine(shiftedLineIndex, line);
-                                System.out.println("shifted line: " + getLine(shiftedLineIndex));
+                              //  System.out.println("shifted line: " + getLine(shiftedLineIndex));
                                 shiftedLineIndex++;
                         }
                 }
-                System.out.println("index: " + shiftedLineIndex);
         }
 
         //sets shifted lines on given line

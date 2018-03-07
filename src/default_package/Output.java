@@ -45,7 +45,7 @@ public class Output {
                         // If first word is a noise word, don't print
                         if (!noiseWordList.contains(firstWord)) {
 
-                                System.out.println("sorted:" + alphabetizer.getLine(i));
+                                System.out.println((i+1) + ". sorted:" + alphabetizer.getLine(i));
 
                                 gui.getHeaderLaber().setText("Output:");
 

@@ -26,7 +26,7 @@ public class Input {
 	
 	KWICdriver gui = new KWICdriver();
 	
-	public LineStorage readAndStore(String file, LineStorage lineStorage) throws IOException {
+	public LineStorage readAndStore(String file, StorageI lineStorage) throws IOException {
 		// Reads the file
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 
@@ -55,7 +55,7 @@ public class Input {
 		reader.close();
 
 		// Return line storage
-		return lineStorage;
+		return (LineStorage) lineStorage;
 	}
 
 	public void getUserInput( StorageI lineStorage){
@@ -69,6 +69,8 @@ public class Input {
 			}
 		}
 	}
+
+	
 
 }
 
