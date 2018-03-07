@@ -9,7 +9,7 @@ import java.util.Locale;
 /**
  * Alphabetizer: Sorts the list of output lines
  */
-public class Alphabetizer {
+public class Alphabetizer implements StorageI {
 
 	/**
 	 * Circular Shift object
@@ -37,7 +37,7 @@ public class Alphabetizer {
 	 * Makes a copy of the original list from circularShift and sorts this new
 	 * list so that source is unchanged
 	 */
-	public void alpha(CircularShift circularShift) {
+	public void alpha(StorageI circularShift) {
 		// Copy from the original list to a new list
 		for (int i =0; i < circularShift.getLineCount(); i ++) {
 			shiftedLineList.add(circularShift.getLine(i));
@@ -76,5 +76,23 @@ public class Alphabetizer {
 
 	public int getLineCount(){
 		return sortedLineList.size();
+	}
+
+	@Override
+	public String[] getWord(int lineNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setWord(int lineNumber, String line) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getWordCountOnLine(int lineNumber) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

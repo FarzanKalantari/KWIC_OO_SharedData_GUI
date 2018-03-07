@@ -58,7 +58,7 @@ public class Input {
 		return lineStorage;
 	}
 
-	public void getUserInput( LineStorage lineStorage){
+	public void getUserInput( StorageI lineStorage){
 		int lineCounter = 0;
 
 		for (String line : gui.getTextArea().getText().split("\\n")){

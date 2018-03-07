@@ -94,7 +94,7 @@ public class KWICdriver extends Application{
 
                          // Initialize Input get text from gui
                          Input input = new Input();
-                         LineStorage lineStorage = new LineStorage();
+                         StorageI lineStorage = new LineStorage();
                        //  IStorage lineStorage = new LineStorage();
 //                       try {
 //                               input.readAndStore("C:\\Users\\1540362838C\\Documents\\workspace\\KWIC OO Shared Data GUI\\src\\testCase", lineStorage);
@@ -106,24 +106,21 @@ public class KWICdriver extends Application{
 
                          textArea.setText("");
                          // Initialize Circular Shift based on the line storage and process shift
-                         CircularShift circularShift = new CircularShift();
-                         circularShift.setup(lineStorage);
-                 //      lineStorage = new CircularShift();
-                 //      lineStorage.setup();
-                        // IStorage circularShift = new CircularShift();
-                        // ((CircularShift) circularShift).setup((LineStorage) lineStorage);
+                        // CircularShift circularShift = new CircularShift();
+                      //   circularShift.setup(lineStorage);
+                         StorageI circularShift = new CircularShift();
+                         ((CircularShift) circularShift).setup(lineStorage);
 
                          // Initialize Alphabetizer based on the Circular Shift and sort
-                         Alphabetizer alphabetizer = new Alphabetizer();
-                         alphabetizer.alpha(circularShift);
-                 //      lineStorage = new Alphabetizer();
-                      //   IStorage alphabetizer = new Alphabetizer();
-                      //   ((Alphabetizer) alphabetizer).alpha((CircularShift) circularShift);
-                 //       lineStorage.alpha();
+                         //Alphabetizer alphabetizer = new Alphabetizer();
+                        // alphabetizer.alpha(circularShift);
+                         StorageI alphabetizer = new Alphabetizer();
+                         ((Alphabetizer) alphabetizer).alpha(circularShift);
+ 
 
                          // print output
                          //output.print(alphabetizer);
-                         output.print(alphabetizer);
+                         output.print((Alphabetizer) alphabetizer);
 
 
                          submitButton.setDisable(true);

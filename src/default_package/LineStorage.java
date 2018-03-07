@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * LineStorage: Stores the line and words
  */
-public class LineStorage {
+public class LineStorage implements StorageI {
 
         /**
          * Map that stores line number and corresponding sentence/line
@@ -40,14 +40,14 @@ public class LineStorage {
         /**
          * Get line based on the line number
          */
-        public String getLine(Integer lineNumber) {
+        public String getLine(int lineNumber) {
                 return lineMap.get(lineNumber);
         }
 
         /**
          * Get word array based on the line number
          */
-        public String[] getWord(Integer lineNumber) {
+        public String[] getWord(int lineNumber) {
                 return wordMap.get(lineNumber);
         }
 
@@ -55,7 +55,7 @@ public class LineStorage {
          * Add a line to the storage line map which automatically calls the addWord
          * to add the storage word array map
          */
-        public void setLine(Integer lineNumber, String line) {
+        public void setLine(int lineNumber, String line) {
                 lineMap.put(lineNumber, line);
 
                 setWord(lineNumber, line);
@@ -69,7 +69,9 @@ public class LineStorage {
         /**
          * Add storage word arry map
          */
-        public void setWord(Integer lineNumber, String line) {
+        public void setWord(int lineNumber, String line) {
                 wordMap.put(lineNumber, line.split(" "));
         }
+
+
 }

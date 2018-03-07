@@ -4,7 +4,7 @@ package default_package;
  * CircularShift: Performs circular word shift to the right
  *
  */
-public class CircularShift {
+public class CircularShift implements StorageI {
 
         /**
          * Line Storage object
@@ -24,7 +24,7 @@ public class CircularShift {
 
         String line;
         int shiftedLineIndex = 0;
-        public void setup(LineStorage lineStorage) {
+        public void setup(StorageI lineStorage) {
                 //loop through all original lines to shift
                 for(int i = 0; i < lineStorage.getLineCount(); i++){
                         line = lineStorage.getLine(i);
@@ -68,7 +68,7 @@ public class CircularShift {
         }
 
         //sets shifted words on given line
-        public void setWord(Integer lineNumber, String line) {
+        public void setWord(int lineNumber, String line) {
                 lineStore.setWord(lineNumber, line);
         }
 
@@ -76,4 +76,12 @@ public class CircularShift {
         public int getLineCount(){
                 return shiftedLineIndex;
         }
+
+		@Override
+		public int getWordCountOnLine(int lineNumber) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		
 }
